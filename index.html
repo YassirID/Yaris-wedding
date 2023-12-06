@@ -37,11 +37,11 @@
       class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-white"
     >
       <main>
-        <h4>Kepada Bapak/Ibu/Saudara/I,</h4>
+        <h4>Kepada <span>Bapak/Ibu/Saudara/I,</span></h4>
         <h1>Yassir & Arisu</h1>
         <p>Akan melangsungkan repsesinya dalam:</p>
         <div class="simply-countdown"></div>
-        <a href="#undangan" class="btn btn-lg mt-4" onClick="enableScroll()"
+        <a href="#home" class="btn btn-lg mt-4" onClick="enableScroll()"
           >lihat undangan</a
         >
       </main>
@@ -165,8 +165,12 @@
           <div class="col-md-8 col-10 text-center">
             <h2>Informasi Acara</h2>
             <p class="alamat">Alamat: Gedung Isi Sendiri, <br />Jl. Cimahi</p>
+
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.19681443657!2d107.53922190808127!3d-6.867003597944559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e468bf2e9f3d%3A0xe7a0cce9a81e23b3!2sSMK%20SANGKURIANG%201%20CIMAHI!5e0!3m2!1sid!2sid!4v1701880650164!5m2!1sid!2sid" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          
             <a
-              href="https://maps.app.goo.gl/4rbaVTHDd2W7yijy5"
+              href="https://maps.app.goo.gl/QBBkRK2sqcL6LF8i6"
               target="_blank"
               class="btn btn-light btn-sm my-3"
               >klik untuk membuka peta</a
@@ -452,6 +456,33 @@
             </div>
           </div>
           </form>
+
+
+          <div class="row justify-content-center">
+            <div class="col-md-6">
+              <div id="disqus_thread"></div>
+<script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://yaris-wedding.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </div>
+          </div>
+
+
       </div>
     </section>
 
@@ -511,14 +542,29 @@
         </div>
       </div>
     </footer>
+
+    <!-- Audio -->
+    <div id="audio-container">
+      <audio id="song" autoplay loop>
+        <source src="audio/Govinda x Ernie Zakri - Hal Hebat (Official Audio)(MP3_160K).mp3" type="audio/mp3">
+      </audio>
+
+      <div class="audio-icon-wrapper" style="display: none;">
+      <i class="bi bi-disc"></i></div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <!-- Bootstrap -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
 
+    <!-- LightBox -->
     <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
 
+    <!-- Waktu Mundur -->
     <script>
       simplyCountdown(".simply-countdown", {
         year: 2024, // required
@@ -537,6 +583,7 @@
       });
     </script>
 
+    <!-- Menu di mode Tablet=> -->
     <script>
       const stickyTop = document.querySelector(".sticky-top");
       const offcanvas = document.querySelector(".offcanvas");
@@ -550,8 +597,13 @@
       });
     </script>
 
+    <!-- Lock Undangan dan Play Musik -->
     <script>
       const rootElement = document.querySelector(":root");
+      const audioIconWrapper = document.querySelector('.audio-icon-wrapper');
+      const audioIcon = document.querySelector('.audio-icon-wrapper i');
+      const song = document.querySelector('#song');
+      let isPlaying = false;
 
       function disableScroll() {
         scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -567,14 +619,38 @@
       function enableScroll() {
         window.onscroll = function () {};
         rootElement.style.scrollBehavior = "smooth";
-        localStorage.setItem("opened", "true");
+        // localStorage.setItem("opened", "true");
+        playAudio();
       }
 
-      if (!localStorage.getItem("opened")) {
-        disableScroll();
+      function playAudio() {
+        
+        song.volume = 0.1;
+        audioIconWrapper.style.display = 'flex';
+        song.play();
+        isPlaying = true;
       }
+
+      audioIconWrapper.onclick = function() {
+        if (isPlaying) {
+          song.pause();
+          audioIcon.classList.remove('bi-disc');
+          audioIcon.classList.add('bi-pause-circle');
+        } else {
+          song.play();
+          audioIcon.classList.add('bi-disc');
+          audioIcon.classList.remove('bi-pause-circle');
+        }
+
+        isPlaying = !isPlaying;
+      }
+
+      // if (!localStorage.getItem("opened")) {
+      //   disableScroll();
+      // }
+      disableScroll();
     </script>
-    
+    <!-- Submit Form -->
     <script>
       window.addEventListener("load", function() {
   const form = document.getElementById('my-form');
@@ -591,6 +667,18 @@
     })
   });
 });
+    </script>
+
+    <!-- Pengubah nama -->
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const nama = urlParams.get('n') || '';
+      // console.log(nama);
+      const pronoun = urlParams.get('p') || 'Bapak/Ibu/Saudara/I';
+      const namaContainer = document.querySelector('.hero h4 span');
+      namaContainer.innerText = `${pronoun} ${nama},`.replace(/ ,$/, ',');
+
+      document.querySelector('#nama').value = nama;
     </script>
   </body>
 </html>

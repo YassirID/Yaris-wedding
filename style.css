@@ -431,6 +431,35 @@ footer li {
   }
 }
 
+/* Audio */
+.audio-icon-wrapper {
+  width: 3rem;
+  height: 3rem;
+  font-size: 3rem;
+  position: fixed;
+  bottom: 2.5rem;
+  right: 2rem;
+  cursor: pointer;
+  color: white;
+  opacity: 0.5;
+  mix-blend-mode: difference;
+  animation: rotating 4s linear infinite;
+  transform-origin: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 0;
+}
+
+@keyframes rotating {
+  form {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(1turn);
+  }
+}
 /* Tablet */
 @media (max-width: 768px) {
   html {
