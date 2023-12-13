@@ -23,6 +23,7 @@ body {
   background-position: center;
   z-index: -1;
   filter: grayscale();
+  backdrop-filter: blur(4px);
 }
 
 .hero {
@@ -40,6 +41,8 @@ body {
 .hero h1 {
   font-family: "Sacramento", cursive;
   font-size: 6rem;
+  font-weight: 700;
+  color: rgb(255, 174, 0);
 }
 
 .hero h4 {
@@ -62,11 +65,12 @@ body {
 
 /* Navbar */
 .mynavbar {
-  background-color: rgba(255, 255, 255, 0.3) !important;
-  backdrop-filter: blur(4px);
+  background-color: rgba(31, 143, 255, 0.5) !important;
+  backdrop-filter: blur(5px);
 }
 
 .mynavbar .offcanvas {
+  font-weight: 500;
   height: 100vh;
 }
 
@@ -375,6 +379,30 @@ footer li {
   display: inline;
   margin: 0.5rem;
 }
+
+footer li a {
+  margin: 0.5rem;
+}
+
+/* Audio */
+.audio-icon-wrapper {
+  width: 3rem;
+  height: 3rem;
+  font-size: 3rem;
+  position: fixed;
+  bottom: 2.5rem;
+  right: 2rem;
+  cursor: pointer;
+  color: white;
+  opacity: 0.5;
+  mix-blend-mode: difference;
+  animation: rotating 4s linear infinite;
+  transform-origin: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 0;
+}
 /* Media Query */
 /* Extra Large */
 @media (max-width: 1200px) {
@@ -429,26 +457,6 @@ footer li {
     left: -13px;
     right: auto;
   }
-}
-
-/* Audio */
-.audio-icon-wrapper {
-  width: 3rem;
-  height: 3rem;
-  font-size: 3rem;
-  position: fixed;
-  bottom: 2.5rem;
-  right: 2rem;
-  cursor: pointer;
-  color: white;
-  opacity: 0.5;
-  mix-blend-mode: difference;
-  animation: rotating 4s linear infinite;
-  transform-origin: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  line-height: 0;
 }
 
 @keyframes rotating {
